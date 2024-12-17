@@ -11,6 +11,8 @@ class EmailChannel extends ChannelAbstract
 {
     protected string $email_to;
     protected string $email_from;
+    protected string $name_from = 'From Name';
+    protected string $name_recipient = 'Recipient Name';
 
     protected string $host;
     protected string $post;
@@ -25,15 +27,15 @@ class EmailChannel extends ChannelAbstract
 
         try {
             $mail->isSMTP();
-            $mail->Host = $this->host; // Your SMTP server
+            $mail->Host = $this->host;
             $mail->SMTPAuth = true;
-            $mail->Username = $this->username; // Your Mailtrap username
-            $mail->Password = $this->password; // Your Mailtrap password
+            $mail->Username = $this->username;
+            $mail->Password = $this->password;
             $mail->SMTPSecure = 'tls';
             $mail->Port = $this->post;
 
-            $mail->setFrom($this->email_from, 'From Name');
-            $mail->addAddress($this->email_to, 'Recipient Name');
+            $mail->setFrom($this->email_from, $this->name_from);
+            $mail->addAddress($this->email_to, $this->name_recipient);
 
             $mail->isHTML(false);
             $mail->Subject = $this->subject;
