@@ -1,5 +1,5 @@
 {
-    "name": "om/test_logger",
+    "name": "oleksandra_morunova/test_logger",
     "type": "library",
     "autoload": {
         "psr-4": {
