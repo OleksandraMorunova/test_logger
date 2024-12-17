@@ -10,5 +10,5 @@ abstract class ChannelAbstract
             $this->$name = $value;
         }
     }
-    public abstract function send(string $message);
+    public abstract function send(string $message): void;
 }

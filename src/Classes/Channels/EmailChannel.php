@@ -24,6 +24,9 @@ class EmailChannel extends ChannelAbstract
     protected string $password;
     protected string $subject = 'Logging';
 
+    /**
+     * @throws Exception
+     */
     public function send(string $message): void
     {
         $mail = new PHPMailer(true);
