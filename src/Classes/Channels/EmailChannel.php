@@ -43,7 +43,7 @@ class EmailChannel extends ChannelAbstract
             $mail->Body = $message;
             $mail->send();
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            throw new Exception("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
         }
     }
 }
