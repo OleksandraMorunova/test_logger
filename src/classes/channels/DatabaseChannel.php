@@ -9,8 +9,16 @@ use PDO;
 class DatabaseChannel extends ChannelAbstract
 {
     protected \PDO $pdo;
+    protected string $dsn;
+
     protected string $sql;
     protected string $binding = ':log_message';
+
+    public function __construct(array $config)
+    {
+        parent::__construct($config);
+        $this->pdo = new PDO($this->dsn);
+    }
 
     /**
      * @throws Exception
