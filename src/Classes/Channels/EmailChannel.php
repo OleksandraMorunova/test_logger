@@ -16,6 +16,7 @@ class EmailChannel extends ChannelAbstract
 
     protected string $host;
     protected string $port;
+    protected string $secure = PHPMailer::ENCRYPTION_SMTPS;
 
     protected string $username;
     protected string $password;
@@ -31,7 +32,7 @@ class EmailChannel extends ChannelAbstract
             $mail->SMTPAuth = true;
             $mail->Username = $this->username;
             $mail->Password = $this->password;
-            $mail->SMTPSecure = 'tls';
+            $mail->SMTPSecure = $this->secure;
             $mail->Port = $this->port;
 
             $mail->setFrom($this->email_from, $this->name_from);
@@ -40,6 +41,7 @@ class EmailChannel extends ChannelAbstract
             $mail->isHTML(false);
             $mail->Subject = $this->subject;
             $mail->Body = $message;
+            $mail->send();
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
