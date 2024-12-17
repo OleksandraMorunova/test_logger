@@ -16,6 +16,8 @@ class EmailChannel extends ChannelAbstract
 
     protected string $host;
     protected string $port;
+
+    protected bool $auth = false;
     protected string $secure = PHPMailer::ENCRYPTION_SMTPS;
 
     protected string $username;
@@ -29,7 +31,7 @@ class EmailChannel extends ChannelAbstract
         try {
             $mail->isSMTP();
             $mail->Host = $this->host;
-            $mail->SMTPAuth = true;
+            $mail->SMTPAuth = $this->auth;
             $mail->Username = $this->username;
             $mail->Password = $this->password;
             $mail->SMTPSecure = $this->secure;
