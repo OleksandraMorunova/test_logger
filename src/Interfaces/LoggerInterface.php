@@ -1,5 +1,5 @@
 <?php
-namespace Om\TestLogger;
+namespace Om\TestLogger\Interfaces;
 
 interface LoggerInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Om\TestLogger;
+namespace Om\TestLogger\Classes;
 
 abstract class ChannelAbstract
 {

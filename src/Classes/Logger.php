@@ -1,6 +1,10 @@
 <?php
 
-namespace Om\TestLogger;
+namespace Om\TestLogger\Classes;
+
+use Om\TestLogger\Classes\Channels\EmailChannel;
+use Om\TestLogger\Classes\Channels\FileChannel;
+use Om\TestLogger\Interfaces\LoggerInterface;
 
 class Logger implements LoggerInterface
 {

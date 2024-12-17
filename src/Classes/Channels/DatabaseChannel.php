@@ -1,9 +1,9 @@
 <?php
 
-namespace Om\TestLogger;
+namespace Om\TestLogger\Classes\Channels;
 
 use Exception;
-use Om\TestLogger\ChannelAbstract;
+use Om\TestLogger\Classes\ChannelAbstract;
 use PDO;
 
 class DatabaseChannel extends ChannelAbstract

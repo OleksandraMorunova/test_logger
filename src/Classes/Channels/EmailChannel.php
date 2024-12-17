@@ -1,8 +1,8 @@
 <?php
 
-namespace Om\TestLogger;
+namespace Om\TestLogger\Classes\Channels;
 
-use Om\TestLogger\ChannelAbstract;
+use Om\TestLogger\Classes\ChannelAbstract;
 
 class EmailChannel extends ChannelAbstract
 {

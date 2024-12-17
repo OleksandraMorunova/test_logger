@@ -1,6 +1,8 @@
 <?php
 
-namespace Om\TestLogger;
+namespace Om\TestLogger\Classes\Channels;
+
+use Om\TestLogger\Classes\ChannelAbstract;
 
 class FileChannel extends ChannelAbstract
 {
