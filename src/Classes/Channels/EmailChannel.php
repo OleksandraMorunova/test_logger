@@ -15,7 +15,7 @@ class EmailChannel extends ChannelAbstract
     protected string $name_recipient = 'Recipient Name';
 
     protected string $host;
-    protected string $post;
+    protected string $port;
 
     protected string $username;
     protected string $password;
@@ -32,7 +32,7 @@ class EmailChannel extends ChannelAbstract
             $mail->Username = $this->username;
             $mail->Password = $this->password;
             $mail->SMTPSecure = 'tls';
-            $mail->Port = $this->post;
+            $mail->Port = $this->port;
 
             $mail->setFrom($this->email_from, $this->name_from);
             $mail->addAddress($this->email_to, $this->name_recipient);
