@@ -1,0 +1,17 @@
+{
+    "name": "om/test_logger",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Om\\TestLogger\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oleksandra Morunova",
+            "email": "oleksandramorunova@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
