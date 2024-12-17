@@ -11,6 +11,7 @@ class EmailChannel extends ChannelAbstract
 
     public function send(string $message): void
     {
-        mail($this->email_to,$this->subject, $message);
+        $msg = wordwrap($message,70);
+        mail($this->email_to,$this->subject, $msg);
     }
 }
