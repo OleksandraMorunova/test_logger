@@ -10,6 +10,8 @@ class DatabaseChannel extends ChannelAbstract
 {
     protected \PDO $pdo;
     protected string $dsn;
+    protected ?string $username = null;
+    protected ?string $password = null;
 
     protected string $sql;
     protected string $binding = ':log_message';
@@ -17,7 +19,7 @@ class DatabaseChannel extends ChannelAbstract
     public function __construct(array $config)
     {
         parent::__construct($config);
-        $this->pdo = new PDO($this->dsn);
+        $this->pdo = new PDO(dsn: $this->dsn, username: $this->username, password: $this->password);
     }
 
     /**
