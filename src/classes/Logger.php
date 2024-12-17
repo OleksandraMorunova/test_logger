@@ -4,7 +4,7 @@ namespace Om\TestLogger;
 
 class Logger implements LoggerInterface
 {
-    public array $config = [
+    public array $channels = [
         'email' => [
             'class' => EmailChannel::class,
             'email_to' => 'test@test.com'
@@ -18,12 +18,14 @@ class Logger implements LoggerInterface
     /**
      * @var ChannelAbstract[]
      */
-    public array $channels;
+    public array $initialize_channels;
     protected string $type;
 
     public function __construct(array $config)
     {
-        $this->config = $config;
+        foreach ($config as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
     /**
@@ -59,7 +61,7 @@ class Logger implements LoggerInterface
      */
     protected function initLogger(string $loggerType): ChannelAbstract
     {
-        $loggerConfig = $this->config[$loggerType] ?? null;
+        $loggerConfig = $this->channels[$loggerType] ?? null;
 
         if (!$loggerConfig) {
             throw new \Exception('Logger configuration not found: ' . $loggerType);
@@ -81,7 +83,7 @@ class Logger implements LoggerInterface
      */
     protected function findLogger(string $loggerType): ChannelAbstract
     {
-        $this->channels[$loggerType] = $this->channels[$loggerType] ?? $this->initLogger($loggerType);
-        return $this->channels[$loggerType];
+        $this->initialize_channels[$loggerType] = $this->initialize_channels[$loggerType] ?? $this->initLogger($loggerType);
+        return $this->initialize_channels[$loggerType];
     }
 }
