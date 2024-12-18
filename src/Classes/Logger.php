@@ -2,6 +2,7 @@
 
 namespace Om\TestLogger\Classes;
 
+use Exception;
 use Om\TestLogger\Classes\Channels\EmailChannel;
 use Om\TestLogger\Classes\Channels\FileChannel;
 use Om\TestLogger\Interfaces\LoggerInterface;
@@ -33,7 +34,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function send(string $message): void
     {
@@ -42,7 +43,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function sendByLogger(string $message, string $loggerType): void
     {
@@ -61,20 +62,20 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected function initLogger(string $loggerType): ChannelAbstract
     {
         $loggerConfig = $this->channels[$loggerType] ?? null;
 
         if (!$loggerConfig) {
-            throw new \Exception('Logger configuration not found: ' . $loggerType);
+            throw new Exception('Logger configuration not found: ' . $loggerType);
         }
 
         $className = $loggerConfig['class'] ?? null;
 
         if (!$className) {
-            throw new \Exception('Logger class not found: ' . $loggerType);
+            throw new Exception('Logger class not found: ' . $loggerType);
         }
 
         unset($loggerConfig['class']);
@@ -83,7 +84,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected function findLogger(string $loggerType): ChannelAbstract
     {

@@ -8,7 +8,7 @@ use PDO;
 
 class DatabaseChannel extends ChannelAbstract
 {
-    protected \PDO $pdo;
+    protected PDO $pdo;
     protected string $dsn;
     protected ?string $username = null;
     protected ?string $password = null;

@@ -24,31 +24,39 @@ class EmailChannel extends ChannelAbstract
     protected string $password;
     protected string $subject = 'Logging';
 
+    protected PHPMailer $mailer;
+
+    public function __construct(array $config)
+    {
+        parent::__construct($config);
+        $this->mailer = new PHPMailer(true);
+
+        $this->mailer->isSMTP();
+        $this->mailer->Host = $this->host;
+        $this->mailer->SMTPAuth = $this->auth;
+        $this->mailer->Username = $this->username;
+        $this->mailer->Password = $this->password;
+        $this->mailer->SMTPSecure = $this->secure;
+        $this->mailer->Port = $this->port;
+
+        $this->mailer->setFrom($this->email_from, $this->name_from);
+        $this->mailer->addAddress($this->email_to, $this->name_recipient);
+
+        $this->mailer->isHTML(false);
+        $this->mailer->Subject = $this->subject;
+
+    }
+
     /**
      * @throws Exception
      */
     public function send(string $message): void
     {
-        $mail = new PHPMailer(true);
-
         try {
-            $mail->isSMTP();
-            $mail->Host = $this->host;
-            $mail->SMTPAuth = $this->auth;
-            $mail->Username = $this->username;
-            $mail->Password = $this->password;
-            $mail->SMTPSecure = $this->secure;
-            $mail->Port = $this->port;
-
-            $mail->setFrom($this->email_from, $this->name_from);
-            $mail->addAddress($this->email_to, $this->name_recipient);
-
-            $mail->isHTML(false);
-            $mail->Subject = $this->subject;
-            $mail->Body = $message;
-            $mail->send();
+            $this->mailer->Body = $message;
+            $this->mailer->send();
         } catch (Exception $e) {
-            throw new Exception("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+            throw new Exception("Message could not be sent. Mailer Error: {$this->mailer->ErrorInfo}");
         }
     }
 }

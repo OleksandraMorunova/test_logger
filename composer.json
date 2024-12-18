@@ -16,6 +16,7 @@
     "version": "1.0",
     "require": {
         "php": "^8.0",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+      "ext-pdo": "*"
     }
 }
