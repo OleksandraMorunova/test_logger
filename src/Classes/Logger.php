@@ -64,7 +64,7 @@ class Logger implements LoggerInterface
     /**
      * @throws Exception
      */
-    protected function initLogger(string $loggerType): ChannelAbstract
+    protected function initChannel(string $loggerType): ChannelAbstract
     {
         $loggerConfig = $this->channels[$loggerType] ?? null;
 
@@ -88,7 +88,7 @@ class Logger implements LoggerInterface
      */
     protected function findLogger(string $loggerType): ChannelAbstract
     {
-        $this->initialize_channels[$loggerType] = $this->initialize_channels[$loggerType] ?? $this->initLogger($loggerType);
+        $this->initialize_channels[$loggerType] = $this->initialize_channels[$loggerType] ?? $this->initChannel($loggerType);
         return $this->initialize_channels[$loggerType];
     }
 }
