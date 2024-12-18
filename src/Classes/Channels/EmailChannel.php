@@ -20,8 +20,8 @@ class EmailChannel extends ChannelAbstract
     protected bool $auth = false;
     protected string $secure = PHPMailer::ENCRYPTION_SMTPS;
 
-    protected string $username;
-    protected string $password;
+    protected ?string $username;
+    protected ?string $password;
     protected string $subject = 'Logging';
 
     protected PHPMailer $mailer;

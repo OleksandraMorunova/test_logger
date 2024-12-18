@@ -12,6 +12,12 @@ class FileChannel extends ChannelAbstract
     public function __construct(array $config)
     {
         parent::__construct($config);
+
+        $dir = pathinfo($config['file_to'], PATHINFO_DIRNAME);
+        if(!is_dir($dir)) {
+            mkdir($dir);
+        }
+
         $this->resource = fopen($this->file_to, 'a+');
     }
 
