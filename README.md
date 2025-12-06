@@ -1,7 +1,8 @@
 Реалізувати спрощений модуль логування на Yii2.
 Пропонується реалізувати наступний інтерфейс, з яким і будуть працювати клієнти даного модуля:
-Interface LoggerInterface
+
 ```
+Interface LoggerInterface
 {
 /**
 * Sends message to current logger.
